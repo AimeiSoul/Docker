@@ -1,5 +1,5 @@
 # Docker Script
-The Script can recognize the OS to install docker（now only support Ubuntu & Rocky & Centos）
+The Script can recognize the OS to install or uninstall docker（now only support Ubuntu & Rocky & Centos）
 
 # How to Use？
 
