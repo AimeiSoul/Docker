@@ -5,8 +5,20 @@ The Script can recognize the OS to install docker（now only support Ubuntu & Ro
 
 ##China：
 
-wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0ggVWiSKFTTdt7lOf5uR9_PSQzA=:0 | sudo bash
+Install：
+
+wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0ggVWiSKFTTdt7lOf5uR9_PSQzA=:0 | sudo bash -s install
+
+Uninstall:
+
+wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0ggVWiSKFTTdt7lOf5uR9_PSQzA=:0 | sudo bash -s uninstall
 
 ##Gloabl:
 
-wget -qO- https://github.com/AimeiSoul/Docker/blob/main/docker.sh | sudo bash
+Install：
+
+wget -qO- https://github.com/AimeiSoul/Docker/blob/main/docker.sh | sudo bash -s install
+
+Uninstall:
+
+wget -qO- https://github.com/AimeiSoul/Docker/blob/main/docker.sh | sudo bash -s uninstall
