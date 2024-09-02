@@ -17,8 +17,8 @@ wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0
 
 Install：
 
-wget -qO- https://github.com/AimeiSoul/Docker/releases/download/v3.0/docker.sh | sudo bash -s install
+wget -qO- https://github.com/AimeiSoul/Docker/releases/download/v3.2/docker.sh | sudo bash -s install
 
 Uninstall:
 
-wget -qO- https://github.com/AimeiSoul/Docker/releases/download/v3.0/docker.sh | sudo bash -s uninstall
+wget -qO- https://github.com/AimeiSoul/Docker/releases/download/v3.2/docker.sh | sudo bash -s uninstall
