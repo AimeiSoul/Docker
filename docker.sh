@@ -51,10 +51,11 @@ install_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str3}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在添加Docker库(阿里)\033[0m"
+            echo -e "\033[36m1.添加Docker GPG秘钥\033[0m"
             apt install apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release -y -q
-            curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            mkdir -p /etc/apt/keyrings
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc
+            echo "deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
             apt update
             echo ""
             echo ""
@@ -62,12 +63,12 @@ install_package() {
             apt install docker-ce docker-ce-cli containerd.io docker-compose docker-compose-plugin -y -q
             echo ""
             echo ""
-            echo -e "\033[36m3.正在写入Docker国内加速源\033[0m"
+            echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
-            systemctl restart docker
-            echo -e "\033[35m当前国内加速源为：\033[0m"
-            docker info | grep -A1 "Registry Mirrors"
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #systemctl restart docker
+            #echo -e "\033[35m当前国内加速源为：\033[0m"
+            #docker info | grep -A1 "Registry Mirrors"
             echo ""
             echo ""
             echo -e "\033[36m4.正在设置开机自启\033[0m"
@@ -94,10 +95,9 @@ install_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str5}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在添加Docker库(阿里)\033[0m"
-            yum install yum-utils -y -q
-            yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/rhel/docker-ce.repo
-            sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+            echo -e "\033[36m1.添加Docker GPG秘钥\033[0m"
+            yum install yum-utils device-mapper-persistent-data lvm2 -y -q
+            sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
             yum makecache
             echo ""
             echo ""
@@ -105,12 +105,12 @@ install_package() {
             yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
             echo ""
             echo ""
-            echo -e "\033[36m3.正在写入Docker国内加速源\033[0m"
+            echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
-            systemctl restart docker
-            echo -e "\033[35m当前国内加速源为：\033[0m"
-            docker info | grep -A1 "Registry Mirrors"
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #systemctl restart docker
+            #echo -e "\033[35m当前国内加速源为：\033[0m"
+            #docker info | grep -A1 "Registry Mirrors"
             echo ""
             echo ""
             echo -e "\033[36m4.正在设置开机自启\033[0m"
@@ -137,15 +137,9 @@ install_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str7}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在添加Docker库(阿里)\033[0m"
-            cp -ar /etc/yum.repos.d /etc/yum.repos.d.bak
-            rm -f /etc/yum.repos.d/*.repo
-            curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-$OS_ID.repo
-            yum clean all
-            yum makecache
-            yum install yum-utils -y -q
-            yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-            sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+            echo -e "\033[36m1.添加Docker GPG秘钥\033[0m"
+            yum install yum-utils device-mapper-persistent-data lvm2 -y -q
+            sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
             yum makecache
             echo ""
             echo ""
@@ -153,12 +147,12 @@ install_package() {
             yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
             echo ""
             echo ""
-            echo -e "\033[36m3.正在写入Docker国内加速源\033[0m"
+            echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
-            systemctl restart docker
-            echo -e "\033[35m当前国内加速源为：\033[0m"
-            docker info | grep -A1 "Registry Mirrors"
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #systemctl restart docker
+            #echo -e "\033[35m当前国内加速源为：\033[0m"
+            #docker info | grep -A1 "Registry Mirrors"
             echo ""
             echo ""
             echo -e "\033[36m4.正在设置开机自启\033[0m"
@@ -227,9 +221,9 @@ uninstall_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str3}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在移除Docker库(阿里)\033[0m"
-            rm -rf /usr/share/keyrings/docker-archive-keyring.gpg
-            echo "#deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            echo -e "\033[36m1.移除Docker GPG密钥\033[0m"
+            rm -rf /etc/apt/keyrings/*
+            #echo "#deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
             apt update
             echo ""
             echo ""
@@ -260,9 +254,9 @@ uninstall_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str5}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在移除Docker库(阿里)\033[0m"
-            rm -rf /etc/yum.repos.d/docker-ce.repo
-            yum clean all
+            echo -e "\033[36m1.1.移除Docker GPG密钥\033[0m"
+            #rm -rf /etc/yum.repos.d/docker-ce.repo
+            #yum clean all
             yum makecache
             echo ""
             echo ""
@@ -290,9 +284,9 @@ uninstall_package() {
             echo "-----------------------------------------------------------------------"
             echo -e "\033[31m${str7}\033[0m"
             echo "-----------------------------------------------------------------------"
-            echo -e "\033[36m1.正在移除Docker库(阿里)\033[0m"
-            rm -rf /etc/yum.repos.d/docker-ce.repo
-            yum clean all
+            echo -e "\033[36m1.移除Docker GPG密钥\033[0m"
+            #rm -rf /etc/yum.repos.d/docker-ce.repo
+            #yum clean all
             yum makecache
             echo ""
             echo ""
