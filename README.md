@@ -7,11 +7,11 @@ The Script can recognize the OS to install or uninstall docker（now only suppor
 
 Install：
 
-wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0ggVWiSKFTTdt7lOf5uR9_PSQzA=:0 | sudo bash -s install
+wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=xsRYRBFX2GnkLqU20uoejM4_O0YvEqxvXZinHWuoypg=:0 | sudo bash -s install
 
 Uninstall:
 
-wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=i3FPYaQYGWtSvR5T0ggVWiSKFTTdt7lOf5uR9_PSQzA=:0 | sudo bash -s uninstall
+wget -qO- https://alist.aimei.space:5443/d/Temp/docker.sh?sign=xsRYRBFX2GnkLqU20uoejM4_O0YvEqxvXZinHWuoypg=:0 | sudo bash -s uninstall
 
 ##Gloabl:
 
