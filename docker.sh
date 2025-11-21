@@ -65,7 +65,7 @@ install_package() {
             echo ""
             echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerproxy.net\"]\n}" | tee /etc/docker/daemon.json > /dev/null
             #systemctl restart docker
             #echo -e "\033[35m当前国内加速源为：\033[0m"
             #docker info | grep -A1 "Registry Mirrors"
@@ -107,7 +107,7 @@ install_package() {
             echo ""
             echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerproxy.net\"]\n}" | tee /etc/docker/daemon.json > /dev/null
             #systemctl restart docker
             #echo -e "\033[35m当前国内加速源为：\033[0m"
             #docker info | grep -A1 "Registry Mirrors"
@@ -149,7 +149,7 @@ install_package() {
             echo ""
             echo -e "\033[36m3.跳过写入Docker国内加速源\033[0m"
             # 国内加速源，可替换
-            #echo -e "{\n \"registry-mirrors\":[\"https://dockerpull.com\"]\n}" | tee /etc/docker/daemon.json > /dev/null
+            #echo -e "{\n \"registry-mirrors\":[\"https://dockerproxy.net\"]\n}" | tee /etc/docker/daemon.json > /dev/null
             #systemctl restart docker
             #echo -e "\033[35m当前国内加速源为：\033[0m"
             #docker info | grep -A1 "Registry Mirrors"
